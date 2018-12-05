@@ -1,0 +1,5 @@
+---
+apt_packages:
+  - zsh
+  - git
+  - curl

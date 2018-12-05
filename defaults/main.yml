@@ -1,0 +1,11 @@
+---
+# Choose user who you want to install oh my zsh for
+ohmyzsh_users:
+  - user_name: pandemonium
+    user_group: pandemonium
+    user_home: /home/pandemonium
+  - user_name: root
+    user_group: root
+    user_home: /root
+
+ohmyzsh_plugins: git git-flow colored-man-pages composer chucknorris debian extract history kubectl minikube ssh-agent zsh-autosuggestions zsh-syntax-highlighting

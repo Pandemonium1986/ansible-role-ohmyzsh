@@ -1,0 +1,50 @@
+---
+- name: Ensure stretch-backports are enabled
+  apt_repository:
+    repo: deb http://ftp.debian.org/debian stretch-backports main
+    state: present
+    filename: backports
+
+- name: Install apt packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+    default_release: stretch-backports
+    install_recommends: no
+    update_cache: yes
+    cache_valid_time: 86400
+  loop: "{{ apt_packages|flatten(levels=1) }}"
+
+- name: Download oh-my-zsh installer
+  get_url:
+    url: https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    dest: "{{ item.user_home }}/oh-my-zsh-install.sh"
+    mode: 0750
+    owner: "{{ item.user_name }}"
+    group: "{{ item.user_group }}"
+  loop: "{{ ohmyzsh_users|flatten(levels=1) }}"
+
+- name: Install oh-my-zsh
+  shell: "./oh-my-zsh-install.sh"
+  args:
+    chdir: "{{ item.user_home }}"
+    creates: ".oh-my-zsh/README.md"
+  become: yes
+  become_user: "{{ item.user_name }}"
+  loop: "{{ ohmyzsh_users|flatten(levels=1) }}"
+
+- name: Add syntax highlighting plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "{{ item.user_home }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+  become: yes
+  become_user: "{{ item.user_name }}"
+  loop: "{{ ohmyzsh_users|flatten(levels=1) }}"
+
+- name: Add auto suggestions plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "{{ item.user_home }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+  become: yes
+  become_user: "{{ item.user_name }}"
+  loop: "{{ ohmyzsh_users|flatten(levels=1) }}"
