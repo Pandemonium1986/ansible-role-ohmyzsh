@@ -15,6 +15,14 @@
     cache_valid_time: 86400
   loop: "{{ apt_packages|flatten(levels=1) }}"
 
+- name: Ensure user's default shell is zsh
+  user:
+    name: "{{ item.user_name }}"
+    shell: /bin/zsh
+  become: yes
+  become_user: root
+  loop: "{{ ohmyzsh_users|flatten(levels=1) }}"
+
 - name: Download oh-my-zsh installer
   get_url:
     url: https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
@@ -22,6 +30,8 @@
     mode: 0750
     owner: "{{ item.user_name }}"
     group: "{{ item.user_group }}"
+  become: yes
+  become_user: "{{ item.user_name }}"
   loop: "{{ ohmyzsh_users|flatten(levels=1) }}"
 
 - name: Install oh-my-zsh
