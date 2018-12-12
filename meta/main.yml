@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: ohmyzsh
   author: Michael Maffait
   description: Install and configure oh-my-zsh for any user
   # company: your company (optional)
