@@ -58,3 +58,13 @@
   become: yes
   become_user: "{{ item.user_name }}"
   loop: "{{ ohmyzsh_users|flatten(levels=1) }}"
+
+- name: Generate ~/.zshrc
+  template:
+    src: zshrc.j2
+    dest: "{{ item.user_home }}/.zshrc"
+    owner: "{{ item.user_name }}"
+    group: "{{ item.user_group }}"
+  become: yes
+  become_user: root
+  with_items: "{{ ohmyzsh_users }}"
