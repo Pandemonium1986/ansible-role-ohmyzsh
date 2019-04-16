@@ -12,26 +12,41 @@ From defaults/main.yml :
 
 ```yaml
 ohmyzsh_users:
-  - user_name: root
-    user_group: root
-    user_home: /root
-  - user_name: pandemonium
-    user_group: pandemonium
-    user_home: /home/pandemonium
-  - user_name: vagrant
-    user_group: vagrant
-    user_home: /home/vagrant
+  - user_name:    pandemonium
+    user_group:   pandemonium
+    user_home:    /home/pandemonium/
 
-ohmyzsh_plugins: git git-flow colored-man-pages composer chucknorris debian extract history kubectl minikube ssh-agent zsh-autosuggestions zsh-syntax-highlighting
+ohmyzsh_config:
+  - { regexp: '^ZSH_THEME="robbyrussell"$', line: 'ZSH_THEME="agnoster"'}
+  - { regexp: '^# ENABLE_CORRECTION="true"$', line: 'ENABLE_CORRECTION="true"'}
+  - { regexp: '^plugins=\(git\)', line: 'plugins=({{ ohmyzsh_plugins }})'}
+
+ohmyzsh_plugins:  |
+  ansible
+  chucknorris
+  colored-man-pages
+  composer
+  debian
+  docker
+  docker-compose
+  extract
+  git
+  git-flow
+  history
+  kubectl
+  minikube
+  ssh-agent
+  vagrant
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 ```
 
 From vars/main.yml :
 
 ```yaml
-apt_packages:
+_packages:
   - zsh
   - git
-  - curl
 ```
 
 ## Dependencies
@@ -41,10 +56,17 @@ None.
 ## Example Playbook
 
 ```yaml
-- hosts: servers
-  roles:
-    - { role: pandemonium1986.ohmyzsh }
+- name :         Init Playbook
+  hosts :        pandama
+  become:        true
+  become_method: sudo
+  become_user:   root
+  tasks:
+    - import_role:
+        name:    pandemonium1986.ohmyzsh
 ```
+
+Warning : dont forget to set pipelining : True in your ansible.cfg for bypass file [Becoming an Unprivileged User](https://docs.ansible.com/ansible/latest/user_guide/become.html)
 
 ## License
 

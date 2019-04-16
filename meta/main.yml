@@ -1,17 +1,18 @@
+---
 galaxy_info:
-  role_name: ohmyzsh
-  author: Michael Maffait
-  description: Install and configure oh-my-zsh for any user
-  # company: your company (optional)
-  license: MIT
-  min_ansible_version: 2.6
-  github_branch: master
+  role_name:           ohmyzsh
+  author:              Michael Maffait
+  description:         Install and configure oh-my-zsh for any user
+  # company:           your company (optional)
+  license:             MIT
+  min_ansible_version: 2.7
+  github_branch:       master
   platforms:
-    - name: Debian
-      versions:
-        - stretch
-  galaxy_tags:
-    - ohmyzsh
-    - shell
-    - zsh
-dependencies: []
+    - name:            Debian
+      versions:        ['stretch']
+    - name:            EL
+      versions:        ['7']
+    - name:            Ubuntu
+      versions:        ['bionic']
+  galaxy_tags:         ['init', 'system', 'common']
+  dependencies:        []

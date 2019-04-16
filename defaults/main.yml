@@ -1,8 +1,29 @@
 ---
-# Choose user who you want to install oh my zsh for
 ohmyzsh_users:
-  - user_name: root
-    user_group: root
-    user_home: /root
+  - user_name:    pandemonium
+    user_group:   pandemonium
+    user_home:    /home/pandemonium/
 
-ohmyzsh_plugins: git git-flow colored-man-pages composer chucknorris debian extract history kubectl minikube ssh-agent zsh-autosuggestions zsh-syntax-highlighting
+ohmyzsh_config:
+  - { regexp: '^ZSH_THEME="robbyrussell"$', line: 'ZSH_THEME="agnoster"'}
+  - { regexp: '^# ENABLE_CORRECTION="true"$', line: 'ENABLE_CORRECTION="true"'}
+  - { regexp: '^plugins=\(git\)', line: 'plugins=({{ ohmyzsh_plugins }})'}
+
+ohmyzsh_plugins:  |
+  ansible
+  chucknorris
+  colored-man-pages
+  composer
+  debian
+  docker
+  docker-compose
+  extract
+  git
+  git-flow
+  history
+  kubectl
+  minikube
+  ssh-agent
+  vagrant
+  zsh-autosuggestions
+  zsh-syntax-highlighting
