@@ -1,10 +1,15 @@
 # Ansible role : OhMyZsh
 
+![](https://img.shields.io/github/release/Pandemonium1986/ansible-role-ohmyzsh.svg)
+![](https://img.shields.io/github/repo-size/Pandemonium1986/ansible-role-ohmyzsh.svg)
+![](https://img.shields.io/github/release-date/Pandemonium1986/ansible-role-ohmyzsh.svg)
+![](https://img.shields.io/github/license/Pandemonium1986/ansible-role-ohmyzsh.svg)
+
 Install and configure oh-my-zsh for any user.
 
 ## Requirements
 
-This roles is self contained and install Zsh from debian backports if needed.
+This role is self contained. He installs zsh and git packages for debian, ubuntu, centos if needed.
 
 ## Role Variables
 
@@ -56,7 +61,7 @@ None.
 ## Example Playbook
 
 ```yaml
-- name :         Init Playbook
+- name :         OhMyZsh play
   hosts :        pandama
   become:        true
   become_method: sudo
@@ -74,5 +79,5 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## Author Information
 
-* **Jérémy Baumgarth** - *Initial work* - [jebovic](https://github.com/jebovic)
-* **Michael Maffait** - *Customize* - [Pandemonium1986](https://github.com/Pandemonium1986)
+-   **Jérémy Baumgarth** - _Initial work_ - [jebovic](https://github.com/jebovic)
+-   **Michael Maffait** - _Customize_ - [Pandemonium1986](https://github.com/Pandemonium1986)
