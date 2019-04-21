@@ -9,7 +9,7 @@ Install and configure oh-my-zsh for any user.
 
 ## Requirements
 
-This role is self contained. He installs zsh and git packages for debian, ubuntu, centos if needed.
+This role is self contained. He installs zsh and git packages for debian, ubuntu, linux mint, centos if needed.
 
 ## Role Variables
 
