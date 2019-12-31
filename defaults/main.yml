@@ -7,9 +7,9 @@ ohmyzsh_users:
 ohmyzsh_config:
   - { regexp: '^ZSH_THEME="robbyrussell"$', line: 'ZSH_THEME="agnoster"'}
   - { regexp: '^# ENABLE_CORRECTION="true"$', line: 'ENABLE_CORRECTION="true"'}
-  - { regexp: '^plugins=\(git\)', line: 'plugins=({{ ohmyzsh_plugins }})'}
+  - { regexp: '^plugins=\(.*\)', line: 'plugins=({{ ohmyzsh_plugins }})'}
 
-ohmyzsh_plugins:  |
+ohmyzsh_plugins:  >-
   ansible
   chucknorris
   colored-man-pages
