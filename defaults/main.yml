@@ -5,9 +5,9 @@ ohmyzsh_users:
     user_home:    /home/pandemonium/
 
 ohmyzsh_config:
-  - { regexp: '^ZSH_THEME="robbyrussell"$', line: 'ZSH_THEME="agnoster"'}
-  - { regexp: '^# ENABLE_CORRECTION="true"$', line: 'ENABLE_CORRECTION="true"'}
-  - { regexp: '^plugins=\(.*\)', line: 'plugins=({{ ohmyzsh_plugins }})'}
+  - { regexp: '^ZSH_THEME="robbyrussell"$', line: 'ZSH_THEME="agnoster"' }
+  - { regexp: '^# ENABLE_CORRECTION="true"$', line: 'ENABLE_CORRECTION="true"' }
+  - { regexp: '^plugins=\(.*\)', line: 'plugins=({{ ohmyzsh_plugins }})' }
 
 ohmyzsh_plugins:  >-
   ansible

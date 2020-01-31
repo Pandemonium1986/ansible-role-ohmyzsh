@@ -9,10 +9,10 @@ galaxy_info:
   github_branch:       master
   platforms:
     - name:            Debian
-      versions:        ['stretch']
+      versions:        [ 'stretch', 'buster' ]
     - name:            EL
-      versions:        ['7']
+      versions:        [ '7' ]
     - name:            Ubuntu
-      versions:        ['bionic']
-  galaxy_tags:         ['init', 'system', 'common']
+      versions:        [ 'bionic' ]
+  galaxy_tags:         [ 'init', 'system', 'common' ]
   dependencies:        []
