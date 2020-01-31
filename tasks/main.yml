@@ -22,7 +22,7 @@
   include_tasks:
     file:          ohmyzsh.yml
     apply:
-      become:      yes
+      become:      true
       become_user: "{{ loop_ohmyzsh_users.user_name }}"
   loop:            "{{ ohmyzsh_users|flatten(levels=1) }}"
   loop_control:

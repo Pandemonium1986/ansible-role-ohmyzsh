@@ -1,0 +1,17 @@
+---
+- name:                  Prepare
+  hosts:                 all
+  tasks:
+    - name:              Ensure packages are installed on all platforms
+      package:
+        name:            [ sudo, zsh, cowsay ]
+        state:           present
+    - name:              Create molecule user
+      user:
+        name:            "pandemonium"
+        generate_ssh_key: true
+        shell:           /bin/zsh
+        ssh_key_bits:    4096
+        ssh_key_comment: fake_key
+        ssh_key_file:    .ssh/id_rsa
+        ssh_key_type:    rsa

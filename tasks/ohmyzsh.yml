@@ -14,7 +14,7 @@
     group:    "{{ loop_ohmyzsh_users.user_group }}"
 
 - name:       Install oh-my-zsh
-  command:      "bash ./.cache/oh-my-zsh-install.sh"
+  command:    "bash ./.cache/oh-my-zsh-install.sh"
   args:
     chdir:    "{{ loop_ohmyzsh_users.user_home }}"
     creates:  ".oh-my-zsh/README.md"
@@ -37,5 +37,5 @@
     state:    present
     regexp:   '{{ item.regexp }}'
     line:     '{{ item.line }}'
-    backrefs: yes
+    backrefs: true
   loop:       "{{ ohmyzsh_config }}"
