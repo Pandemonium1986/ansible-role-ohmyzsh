@@ -13,7 +13,7 @@ platforms:
     hostname:         debian9
     image:            pandemonium1986/debian9:latest
     pull:             true
-    pre_build_image:  false
+    pre_build_image:  true
     tty:              true
     override_command: false
     volumes:
@@ -25,7 +25,7 @@ platforms:
     hostname:         debian10
     image:            pandemonium1986/debian10:latest
     pull:             true
-    pre_build_image:  false
+    pre_build_image:  true
     tty:              true
     override_command: false
     volumes:
@@ -37,7 +37,7 @@ platforms:
     hostname:         centos7
     image:            pandemonium1986/centos7:latest
     pull:             true
-    pre_build_image:  false
+    pre_build_image:  true
     tty:              true
     override_command: false
     volumes:
@@ -61,7 +61,7 @@ platforms:
     hostname:         ubuntu1804
     image:            pandemonium1986/ubuntu1804:latest
     pull:             true
-    pre_build_image:  false
+    pre_build_image:  true
     tty:              true
     override_command: false
     volumes:
