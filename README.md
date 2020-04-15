@@ -1,9 +1,10 @@
 # Ansible role : OhMyZsh
 
-![](https://img.shields.io/github/release/Pandemonium1986/ansible-role-ohmyzsh.svg)
-![](https://img.shields.io/github/repo-size/Pandemonium1986/ansible-role-ohmyzsh.svg)
-![](https://img.shields.io/github/release-date/Pandemonium1986/ansible-role-ohmyzsh.svg)
-![](https://img.shields.io/github/license/Pandemonium1986/ansible-role-ohmyzsh.svg)
+![Ansible Role](https://img.shields.io/ansible/role/35393?logo=ansible)
+![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/Pandemonium1986/ansible-role-ohmyzsh?logo=gitlab)
+![GitHub release](https://img.shields.io/github/release/Pandemonium1986/ansible-role-ohmyzsh.svg?logo=github)
+![Github license](https://img.shields.io/github/license/Pandemonium1986/ansible-role-ohmyzsh.svg?logo=github)
+![Ansible Quality Score](https://img.shields.io/ansible/quality/35393?logo=ansible)
 
 Install and configure oh-my-zsh for any user.
 
