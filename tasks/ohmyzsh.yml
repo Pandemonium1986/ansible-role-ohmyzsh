@@ -1,41 +1,41 @@
 ---
-- name:       Ensure .cache directory exists
-  file:
-    path:     "{{ loop_ohmyzsh_users.user_home }}.cache"
-    state:    directory
-    mode:     0700
+- name:                      Ensure .cache directory exists
+  sible.builtin.file:
+    path:                    "{{ loop_ohmyzsh_users.user_home }}.cache"
+    state:                   directory
+    mode:                    0700
 
-- name:       Download oh-my-zsh installer
-  get_url:
-    url:      https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
-    dest:     "{{ loop_ohmyzsh_users.user_home }}.cache/oh-my-zsh-install.sh"
-    mode:     0750
-    owner:    "{{ loop_ohmyzsh_users.user_name }}"
-    group:    "{{ loop_ohmyzsh_users.user_group }}"
+- name:                      Download oh-my-zsh installer
+  asible.builtin.get_url:
+    url:                     https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    dest:                    "{{ loop_ohmyzsh_users.user_home }}.cache/oh-my-zsh-install.sh"
+    mode:                    0750
+    owner:                   "{{ loop_ohmyzsh_users.user_name }}"
+    group:                   "{{ loop_ohmyzsh_users.user_group }}"
 
-- name:       Install oh-my-zsh
-  command:    "bash ./.cache/oh-my-zsh-install.sh"
+- name:                      Install oh-my-zsh
+  asible.builtin.command:    "bash ./.cache/oh-my-zsh-install.sh"
   args:
-    chdir:    "{{ loop_ohmyzsh_users.user_home }}"
-    creates:  ".oh-my-zsh/README.md"
+    chdir:                   "{{ loop_ohmyzsh_users.user_home }}"
+    creates:                 ".oh-my-zsh/README.md"
 
-- name:       Add syntax highlighting plugin
-  git:
-    repo:     https://github.com/zsh-users/zsh-syntax-highlighting.git
-    dest:     "{{ loop_ohmyzsh_users.user_home }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-    version:  master
+- name:                      Add syntax highlighting plugin
+  asible.builtin.git:
+    repo:                    https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest:                    "{{ loop_ohmyzsh_users.user_home }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    version:                 master
 
-- name:       Add auto suggestions plugin
-  git:
-    repo:     https://github.com/zsh-users/zsh-autosuggestions.git
-    dest:     "{{ loop_ohmyzsh_users.user_home }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
-    version:  master
+- name:                      Add auto suggestions plugin
+  asible.builtin.git:
+    repo:                    https://github.com/zsh-users/zsh-autosuggestions.git
+    dest:                    "{{ loop_ohmyzsh_users.user_home }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    version:                 master
 
-- name:       Modify configuration file
-  lineinfile:
-    path:     "{{ loop_ohmyzsh_users.user_home }}/.zshrc"
-    state:    present
-    regexp:   '{{ item.regexp }}'
-    line:     '{{ item.line }}'
-    backrefs: true
-  loop:       "{{ ohmyzsh_config }}"
+- name:                      Modify configuration file
+  asible.builtin.lineinfile:
+    path:                    "{{ loop_ohmyzsh_users.user_home }}/.zshrc"
+    state:                   present
+    regexp:                  '{{ item.regexp }}'
+    line:                    '{{ item.line }}'
+    backrefs:                true
+  loop:                      "{{ ohmyzsh_config }}"
