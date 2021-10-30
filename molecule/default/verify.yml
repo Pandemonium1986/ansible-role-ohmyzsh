@@ -1,0 +1,43 @@
+---
+- name:            Verify
+  hosts:           all
+  gather_facts:    true
+  tasks:
+  - name:            Run ohmyzsh as a non-privileged user
+    block:
+    - name:          Run of each application # noqa 301
+      command:
+        cmd:         "{{ item }}"
+      register:      apps_res
+      ignore_errors: true
+      loop:
+        - "ls -l ~/.oh-my-zsh/tools/changelog.sh"
+    - name:          Ensure app is installed and running
+      assert:
+        that:
+          - item.rc == 0
+        quiet:       true
+        fail_msg:    "{{ item.cmd }} does not seem to be available"
+        success_msg: "{{ item.cmd }} is available"
+      loop:          "{{ apps_res.results }}"
+    become:          true
+    become_user:     pandemonium
+  - name:            Run ohmyzsh as a privileged user
+    block:
+    - name:          Run of each application # noqa 301
+      command:
+        cmd:         "{{ item }}"
+      register:      apps_res
+      ignore_errors: true
+      loop:
+        - "ls -l ~/.oh-my-zsh/tools/changelog.sh"
+    - name:          Ensure app is installed and running
+      assert:
+        that:
+          - item.rc == 0
+        quiet:       true
+        fail_msg:    "{{ item.cmd }} does not seem to be available"
+        success_msg: "{{ item.cmd }} is available"
+      loop:          "{{ apps_res.results }}"
+    become:          true
+    become_user:     root

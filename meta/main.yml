@@ -5,14 +5,14 @@ galaxy_info:
   description:         Install and configure oh-my-zsh for any user
   # company:           your company (optional)
   license:             MIT
-  min_ansible_version: 2.7
+  min_ansible_version: 2.10
   github_branch:       master
   platforms:
     - name:            Debian
-      versions:        [ 'stretch', 'buster' ]
+      versions:        [ 'bullseye', 'stretch', 'buster' ]
     - name:            EL
-      versions:        [ '7' ]
+      versions:        [ '7', '8' ]
     - name:            Ubuntu
-      versions:        [ 'bionic' ]
+      versions:        [ 'bionic', 'focal' ]
   galaxy_tags:         [ 'init', 'system', 'common' ]
-  dependencies:        []
+dependencies:          []

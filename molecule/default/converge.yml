@@ -1,5 +1,15 @@
 ---
-- name:  Converge
-  hosts: all
-  roles:
-    - role: ansible-role-ohmyzsh
+- name:             Converge
+  hosts:            all
+  vars:
+    ohmyzsh_users:
+      - user_name:  pandemonium
+        user_group: pandemonium
+        user_home:  /home/pandemonium/
+      - user_name:  root
+        user_group: root
+        user_home:  /root/
+  tasks:
+    - name:         "Include ansible-role-ohmyzsh"
+      include_role:
+        name:       "ansible-role-ohmyzsh"
