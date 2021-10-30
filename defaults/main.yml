@@ -11,7 +11,6 @@ ohmyzsh_config:
 
 ohmyzsh_plugins:  >-
   ansible
-  chucknorris
   colored-man-pages
   composer
   debian
