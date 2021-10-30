@@ -1,0 +1,11 @@
+---
+- name:                           Ensure backports are enabled
+  ansible.builtin.apt_repository:
+    repo:                         "deb http://ftp.debian.org/debian {{ ansible_distribution_release }}-backports main"
+    state:                        present
+    filename:                     backports
+
+- name:                           Ensure apt cache is update
+  ansible.builtin.apt:
+    update_cache:                 true
+    cache_valid_time:             3600
