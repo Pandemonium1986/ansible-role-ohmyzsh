@@ -7,9 +7,6 @@
 - name:                          Include Family specific variables
   ansible.builtin.include_vars:  "{{ ansible_os_family }}-Family.yml"
 
-- name:                          Include OS-specific variables
-  ansible.builtin.include_vars:  "{{ ansible_distribution }}-{{ ansible_distribution_version.split('.')[0] }}.yml" # yamllint disable-line rule:line-length
-
 - name:                          Include OS-specific tasks
   ansible.builtin.include_tasks: setup-{{ ansible_distribution }}.yml
 
