@@ -9,76 +9,27 @@ lint:                 |
   yamllint .
   ansible-lint
 platforms:
-  - name:             molecule-debian9
-    hostname:         debian9
-    image:            pandemonium1986/debian9:latest
-    pull:             true
-    pre_build_image:  true
-    tty:              true
-    override_command: false
+  - name:                    molecule-${DKR_IMAGE:-debian11}
+    hostname:                ${DKR_IMAGE:-debian11}
+    image:                   ghcr.io/pandemonium1986/${DKR_IMAGE:-debian11}:nightly
+    pull:                    true
+    pre_build_image:         true
+    tty:                     true
+    override_command:        false
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged:       true
-    env:
-      LANG:           en_US.utf8
-  - name:             molecule-debian10
-    hostname:         debian10
-    image:            pandemonium1986/debian10:latest
-    pull:             true
-    pre_build_image:  true
-    tty:              true
-    override_command: false
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged:       true
-    env:
-      LANG:           en_US.utf8
-  - name:             molecule-centos7
-    hostname:         centos7
-    image:            pandemonium1986/centos7:latest
-    pull:             true
-    pre_build_image:  true
-    tty:              true
-    override_command: false
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged:       true
-    env:
-      LANG:           en_US.utf8
-  # - name:           molecule-centos8
-  #   hostname:       centos8
-  #   image:          pandemonium1986/centos8:latest
-  #   pull:           true
-  #   pre_build_image: false
-  #   tty:            true
-  #   override_command: false
-  #   volumes:
-  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  #   privileged:     true
-  #   env:
-  #     LANG:         en_US.utf8
-  - name:             molecule-ubuntu1804
-    hostname:         ubuntu1804
-    image:            pandemonium1986/ubuntu1804:latest
-    pull:             true
-    pre_build_image:  true
-    tty:              true
-    override_command: false
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged:       true
-    env:
-      LANG:           en_US.utf8
+    privileged:              true
 provisioner:
-  name:               ansible
-  lint:               |
+  name:                      ansible
+  lint:                      |
     set -e
     ansible-lint
+  config_options:
+    defaults:
+      stdout_callback:       yaml
+      bin_ansible_callbacks: true
 scenario:
-  name:               default
+  name:                      default
 verifier:
-  name:               testinfra
-  lint:               |
-    set -e
-    flake8
-  enabled:            false
+  name:                      ansible
+  enabled:                   true
