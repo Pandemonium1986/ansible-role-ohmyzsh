@@ -2,10 +2,6 @@
 - name:                  Prepare
   hosts:                 all
   tasks:
-    - name:              Ensure packages are installed on all platforms
-      package:
-        name:            [ sudo, zsh ]
-        state:           present
     - name:              Create molecule user
       user:
         name:            "pandemonium"
