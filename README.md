@@ -1,7 +1,7 @@
 # Ansible role : OhMyZsh
 
 ![Ansible Role](https://img.shields.io/ansible/role/35393?logo=ansible)
-![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/Pandemonium1986/ansible-role-ohmyzsh?logo=gitlab)
+[![Molecule](https://github.com/Pandemonium1986/ansible-role-ohmyzsh/actions/workflows/molecule.yml/badge.svg?branch=master)](https://github.com/Pandemonium1986/ansible-role-ohmyzsh/actions/workflows/molecule.yml)
 ![GitHub release](https://img.shields.io/github/release/Pandemonium1986/ansible-role-ohmyzsh.svg?logo=github)
 ![Github license](https://img.shields.io/github/license/Pandemonium1986/ansible-role-ohmyzsh.svg?logo=github)
 ![Ansible Quality Score](https://img.shields.io/ansible/quality/35393?logo=ansible)
@@ -29,7 +29,6 @@ ohmyzsh_config:
 
 ohmyzsh_plugins:  >-
   ansible
-  chucknorris
   colored-man-pages
   composer
   debian
@@ -47,12 +46,13 @@ ohmyzsh_plugins:  >-
   zsh-syntax-highlighting
 ```
 
-From vars/main.yml :
+From vars/main.yml (depends of distribution):
 
 ```yaml
 _packages:
-  - zsh
   - git
+  - sudo
+  - zsh
 ```
 
 ## Dependencies
