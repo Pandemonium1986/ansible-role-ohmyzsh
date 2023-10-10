@@ -80,5 +80,5 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## Author Information
 
--   **Jérémy Baumgarth** - _Initial work_ - [jebovic](https://github.com/jebovic)
--   **Michael Maffait** - _Customize_ - [Pandemonium1986](https://github.com/Pandemonium1986)
+- **Jérémy Baumgarth** - _Initial work_ - [jebovic](https://github.com/jebovic)
+- **Michael Maffait** - _Customize_ - [Pandemonium1986](https://github.com/Pandemonium1986)
