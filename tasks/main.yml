@@ -1,32 +1,32 @@
 ---
-- name:                          Configure Mint Fact
+- name: Configure Mint Fact
   ansible.builtin.set_fact:
-    ansible_distribution:        "Mint"
-  when:                          ansible_distribution == 'Linux Mint'
+    ansible_distribution: "Mint"
+  when: ansible_distribution == 'Linux Mint'
 
-- name:                          Include Family specific variables
-  ansible.builtin.include_vars:  "{{ ansible_os_family }}-Family.yml"
+- name: Include Family specific variables
+  ansible.builtin.include_vars: "{{ ansible_os_family }}-Family.yml"
 
-- name:                          Include OS-specific tasks
+- name: Include OS-specific tasks
   ansible.builtin.include_tasks: setup-{{ ansible_os_family }}.yml
 
-- name:                          Install packages
+- name: Install packages
   ansible.builtin.package:
-    name:                        "{{ _packages }}"
-    state:                       present
+    name: "{{ _packages }}"
+    state: present
 
-- name:                          Ensure user's default shell is zsh
+- name: Ensure user's default shell is zsh
   ansible.builtin.user:
-    name:                        "{{ item.user_name }}"
-    shell:                       /bin/zsh
-  loop:                          "{{ ohmyzsh_users|flatten(levels=1) }}"
+    name: "{{ item.user_name }}"
+    shell: /bin/zsh
+  loop: "{{ ohmyzsh_users | flatten(levels=1) }}"
 
-- name:                          Include ohmyzsh tasks
+- name: Include ohmyzsh tasks
   ansible.builtin.include_tasks:
-    file:                        ohmyzsh.yml
+    file: ohmyzsh.yml
     apply:
-      become:                    true
-      become_user:               "{{ loop_ohmyzsh_users.user_name }}"
-  loop:                          "{{ ohmyzsh_users|flatten(levels=1) }}"
+      become: true
+      become_user: "{{ loop_ohmyzsh_users.user_name }}"
+  loop: "{{ ohmyzsh_users | flatten(levels=1) }}"
   loop_control:
-    loop_var:                    loop_ohmyzsh_users
+    loop_var: loop_ohmyzsh_users

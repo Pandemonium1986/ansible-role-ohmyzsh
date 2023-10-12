@@ -1,15 +1,15 @@
 ---
 ohmyzsh_users:
-  - user_name:    pandemonium
-    user_group:   pandemonium
-    user_home:    /home/pandemonium/
+  - user_name: pandemonium
+    user_group: pandemonium
+    user_home: /home/pandemonium/
 
 ohmyzsh_config:
   - { regexp: '^ZSH_THEME="robbyrussell"$', line: 'ZSH_THEME="agnoster"' }
   - { regexp: '^# ENABLE_CORRECTION="true"$', line: 'ENABLE_CORRECTION="true"' }
-  - { regexp: '^plugins=\(.*\)', line: 'plugins=({{ ohmyzsh_plugins }})' }
+  - { regexp: '^plugins=\(.*\)', line: "plugins=({{ ohmyzsh_plugins }})" }
 
-ohmyzsh_plugins:  >-
+ohmyzsh_plugins: >-
   ansible
   colored-man-pages
   composer
