@@ -1,13 +1,14 @@
 ---
-name:                     Release to Ansible Galaxy
+name: Release to Ansible Galaxy
 on:
   release:
-    types:                [ published ]
+    types: [published]
 jobs:
   release:
-    runs-on:              ubuntu-20.04
+    runs-on: ubuntu-20.04
     steps:
-      - name:             galaxy
-        uses:             robertdebock/galaxy-action@1.2.1
+      - name: galaxy
+        uses: robertdebock/galaxy-action@1.2.1
         with:
           galaxy_api_key: ${{ secrets.galaxy_api_key }}
+          git_branch: main
