@@ -1,0 +1,5 @@
+---
+_packages:
+  - git
+  - sudo
+  - zsh
