@@ -1,0 +1,30 @@
+---
+- name: Include fact generation
+  ansible.builtin.import_tasks: fact.yml
+
+- name: Include family specific variables
+  ansible.builtin.include_vars: "family-{{ _init_os_family }}.yml"
+
+- name: Include distro tasks
+  ansible.builtin.include_tasks: setup-{{ _init_distribution }}.yml
+
+- name: Install packages
+  ansible.builtin.package:
+    name: "{{ _packages }}"
+    state: present
+
+- name: Ensure user's default shell is zsh
+  ansible.builtin.user:
+    name: "{{ item.user_name }}"
+    shell: /bin/zsh
+  loop: "{{ ohmyzsh_users | flatten(levels=1) }}"
+
+- name: Include ohmyzsh tasks
+  ansible.builtin.include_tasks:
+    file: ohmyzsh.yml
+    apply:
+      become: true
+      become_user: "{{ loop_ohmyzsh_users.user_name }}"
+  loop: "{{ ohmyzsh_users | flatten(levels=1) }}"
+  loop_control:
+    loop_var: loop_ohmyzsh_users
