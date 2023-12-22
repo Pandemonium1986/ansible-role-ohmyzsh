@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - develop
-      - main
   pull_request:
     branches:
       - main
@@ -31,12 +30,11 @@ jobs:
       matrix:
         images:
           - "centos7"
-          - "debian10"
-          - "debian11"
-          - "mint19"
-          - "mint20"
-          - "ubuntu1804"
-          - "ubuntu2004"
+          - "debian12"
+          - "ubuntu2204"
+          - "sles15sp3"
+          - "sles15sp5"
+          - "tumbleweed"
     container:
       image: ghcr.io/pandemonium1986/alpine313:nightly
       volumes:
@@ -46,6 +44,7 @@ jobs:
         ANSIBLE_FORCE_COLOR: "1"
         PY_COLORS: "1"
         DKR_IMAGE: ${{ matrix.images }}
+        DKR_TAG: "nightly"
       options: >-
         --workdir /opt/workspace/${{ github.repository }}
     needs:

@@ -1,0 +1,6 @@
+---
+- name: Refresh repositories and update package vim
+  community.general.zypper:
+    name: vim
+    state: present
+    update_cache: true
