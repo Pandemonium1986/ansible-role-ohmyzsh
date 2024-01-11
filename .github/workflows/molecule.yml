@@ -14,7 +14,7 @@ on:
 jobs:
   lint:
     name: "Ansible: Lint"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: "Init: Run checkout"
         uses: actions/checkout@v4
@@ -24,7 +24,7 @@ jobs:
           args: "--exclude .github .pre-commit-config.yaml"
   molecule:
     name: "Molecule: Test"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -44,7 +44,7 @@ jobs:
         ANSIBLE_FORCE_COLOR: "1"
         PY_COLORS: "1"
         DKR_IMAGE: ${{ matrix.images }}
-        DKR_TAG: "nightly"
+        DKR_TAG: "main"
       options: >-
         --workdir /opt/workspace/${{ github.repository }}
     needs:
