@@ -1,18 +1,25 @@
 ---
 - name: Prepare
   hosts: all
+  vars:
+    users: ["pandemonium", "alice", "bob"]
+    packages: ["sudo"]
   tasks:
+    - name: Ensure packages are installed on all platforms
+      ansible.builtin.package:
+        name: "{{ packages }}"
+        state: present
     - name: Create molecule group
       ansible.builtin.group:
-        name: "pandemonium"
+        name: "{{ item }}"
         state: present
+      loop: "{{ users }}"
     - name: Create molecule user
       ansible.builtin.user:
-        name: "pandemonium"
+        name: "{{ item }}"
         generate_ssh_key: true
-        group: pandemonium
-        shell: /bin/zsh
         ssh_key_bits: 4096
         ssh_key_comment: fake_key
         ssh_key_file: .ssh/id_rsa
         ssh_key_type: rsa
+      loop: "{{ users }}"
