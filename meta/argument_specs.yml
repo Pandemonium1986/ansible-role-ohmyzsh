@@ -1,9 +1,11 @@
 ---
 argument_specs:
   main:
-    short_description: Main entry point for the ohmyzsh role
+    short_description: Install and configure oh-my-zsh for any user.
     description:
-      - This is the main entrypoint for the ohmyzsh role.
+      - Install and configure oh-my-zsh for any user.
+      - There is only one entry point, which is main.
+      - You can customize the oh-my-zsh installation by choosing the list of users and plugins and directly change the oh-my-zsh configuration.
     version_added: 4.0.0
     author:
       - Michael Maffait
