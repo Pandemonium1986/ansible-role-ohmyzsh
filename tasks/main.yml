@@ -1,12 +1,12 @@
 ---
-- name: Include fact generation
-  ansible.builtin.import_tasks: fact.yml
+- name: Include fact-global
+  ansible.builtin.import_tasks: fact-global.yml
 
 - name: Include family specific variables
-  ansible.builtin.include_vars: "family-{{ _init_os_family }}.yml"
+  ansible.builtin.include_vars: "family-{{ _global_os_family }}.yml"
 
 - name: Include distro tasks
-  ansible.builtin.include_tasks: setup-{{ _init_distribution }}.yml
+  ansible.builtin.include_tasks: setup-{{ _global_distribution }}.yml
 
 - name: Install packages
   ansible.builtin.package:

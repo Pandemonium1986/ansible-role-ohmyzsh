@@ -1,0 +1,48 @@
+---
+argument_specs:
+  main:
+    short_description: Install and configure oh-my-zsh for any user.
+    description:
+      - Install and configure oh-my-zsh for any user.
+      - There is only one entry point, which is main.
+      - You can customize the oh-my-zsh installation by choosing the list of users and plugins and directly change the oh-my-zsh configuration.
+    version_added: 4.0.0
+    author:
+      - Michael Maffait
+    options:
+      ohmyzsh_users:
+        description: "A list of users with their name, group and home directory."
+        type: "list"
+        required: true
+        elements: "dict"
+        options:
+          user_name:
+            description: "User name."
+            type: "str"
+            required: true
+          user_group:
+            description: "User group."
+            type: "str"
+            required: true
+          user_home:
+            description: "User home directory."
+            type: "path"
+            required: true
+      ohmyzsh_config:
+        description: "A list rexexp and line to apply."
+        type: "list"
+        required: true
+        elements: "dict"
+        options:
+          regexp:
+            description: "The pattern to match."
+            type: "str"
+            required: true
+          line:
+            description: "The line to apply."
+            type: "str"
+            required: true
+      ohmyzsh_plugins:
+        description: "A list of plugins to activate."
+        type: "str"
+        required: true
